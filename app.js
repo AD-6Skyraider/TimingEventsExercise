@@ -36,6 +36,27 @@ stop.addEventListener(`click`, () => {
 });
 
 // BONUS 4
+const countdown = document.querySelector(`#countdown`);
+const p4 = document.createElement(`p`);
+p4.innerHTML = `2:00`;
+countdown.append(p4);
+
+const startTime = 2;
+let time = startTime * 60; // 2 * 60 seconds
+function updateCountdown(){
+    const minutes = Math.floor(time / 60); // Makes it 2.
+    let seconds = time % 60; // 60 goes into 120 2 times. Nothing left over. Makes the seconds part of the counter 0
+    seconds = (seconds < 10) ? `0` + seconds : seconds; // Displays the `00`
+    countdown.innerHTML = `${minutes} : ${seconds}`;
+    time--;
+}
+
+setInterval(() => {
+    updateCountdown();
+    if (time <= 0){
+        countdown.innerHTML = `TIME IS UP!`;
+    }
+}, 1000);
 
 // I have no clue...
 
